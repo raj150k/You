@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Love Letter</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#ffdce5;
+    overflow:hidden;
+    position:relative;
+}
+
+/* Floating Hearts */
+
+.hearts{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    overflow:hidden;
+}
+
+.hearts span{
+    position:absolute;
+    bottom:-100px;
+    font-size:25px;
+    animation:heartMove 10s linear infinite;
+    opacity:0.7;
+}
+
+.hearts span:nth-child(1){
+    left:10%;
+    animation-duration:8s;
+}
+
+.hearts span:nth-child(2){
+    left:25%;
+    animation-duration:10s;
+}
+
+.hearts span:nth-child(3){
+    left:40%;
+    animation-duration:7s;
+}
+
+.hearts span:nth-child(4){
+    left:60%;
+    animation-duration:12s;
+}
+
+.hearts span:nth-child(5){
+    left:80%;
+    animation-duration:9s;
+}
+
+@keyframes heartMove{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Main Box */
+
+.letter-window{
+    width:360px;
+    background:#fff0f4;
+    border:6px solid #ff7aa2;
+    border-radius:25px;
+    padding:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+    position:relative;
+    z-index:2;
+}
+
+/* Top Bar */
+
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.top-bar h2{
+    color:#ff2e63;
+    font-size:28px;
+}
+
+.top-icons{
+    color:#ff2e63;
+    font-size:22px;
+}
+
+/* Title */
+
+#letter-title{
+    text-align:center;
+    color:#ff2e63;
+    font-size:32px;
+    margin-bottom:10px;
+    line-height:1.4;
+}
+
+.sub{
+    text-align:center;
+    color:#c94f7c;
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+/* Cat Gif */
+
+.cat{
+    width:180px;
+    display:block;
+    margin:0 auto 20px;
+}
+
+/* Buttons */
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    position:relative;
+}
+
+.btn{
+    border:none;
+    padding:14px 28px;
+    border-radius:15px;
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    color:white;
+}
+
+.yes-btn{
+    background:#ff2e63;
+}
+
+.no-btn{
+    background:#999;
+    position:relative;
+}
+
+/* Final Text */
+
+.final-text{
+    display:none;
+    text-align:center;
+    margin-top:25px;
+    font-size:32px;
+    color:#ff0055;
+    animation:pop 0.5s ease;
+    font-weight:bold;
+}
+
+@keyframes pop{
+    from{
+        transform:scale(0);
+    }
+
+    to{
+        transform:scale(1);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Floating Hearts -->
+
+<div class="hearts">
+    <span>💖</span>
+    <span>💕</span>
+    <span>💘</span>
+    <span>💝</span>
+    <span>❤️</span>
+</div>
+
+<!-- Main Window -->
+
+<div class="letter-window">
+
+    <!-- Top -->
+
+    <div class="top-bar">
+        <h2>LOVE</h2>
+        <div class="top-icons">♡ ♡ ♡</div>
+    </div>
+
+    <!-- Title -->
+
+    <h1 id="letter-title">
+        তুমি কি আমার রাজ্যের <br>
+        রানি হবে মেডাম ?
+    </h1>
+
+    <div class="sub">
+        (ans: yes / no)
+    </div>
+
+    <!-- Cat GIF -->
+
+    <img
+    src="https://i.imgur.com/9bK0K6T.gif"
+    class="cat"
+    alt="Cute Cat">
+
+    <!-- Buttons -->
+
+    <div class="buttons">
+
+        <button class="btn yes-btn" id="yesBtn">
+            YES
+        </button>
+
+        <button class="btn no-btn" id="noBtn">
+            NO
+        </button>
+
+    </div>
+
+    <!-- Final Text -->
+
+    <div class="final-text" id="finalText">
+        I Love You বউ জানু ❤️
+    </div>
+
+</div>
+
+<script>
+
+/* YES BUTTON */
+
+const yesBtn = document.getElementById("yesBtn");
+const finalText = document.getElementById("finalText");
+
+yesBtn.onclick = () => {
+    finalText.style.display = "block";
+};
+
+/* NO BUTTON MOVE */
+
+const noBtn = document.getElementById("noBtn");
+
+function moveButton(){
+
+    const x = Math.floor(Math.random() * 200) - 100;
+    const y = Math.floor(Math.random() * 200) - 100;
+
+    noBtn.style.transform =
+    `translate(${x}px, ${y}px)`;
+}
+
+/* PC */
+
+noBtn.addEventListener("mouseover", moveButton);
+
+/* MOBILE */
+
+noBtn.addEventListener("touchstart", moveButton);
+
+</script>
+
+</body>
+  </html>
